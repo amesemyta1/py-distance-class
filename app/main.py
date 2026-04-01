@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class Distance:
     def __init__(self, km: int | float) -> None:
         self.km = km
@@ -8,10 +11,10 @@ class Distance:
     def __repr__(self) -> str:
         return f"Distance(km={self.km})"
 
-    def __add__(self, other: int | float | "Distance") -> Distance:
+    def __add__(self, other: int | float | Distance) -> Distance:
         return Distance(self.km + self.get_value(other))
 
-    def __iadd__(self, other: int | float | "Distance") -> Distance:
+    def __iadd__(self, other: int | float | Distance) -> Distance:
         self.km += self.get_value(other)
         return self
 
@@ -25,19 +28,19 @@ class Distance:
             raise TypeError
         return Distance(round(self.km / other, 2))
 
-    def __eq__(self, other: int | float | "Distance") -> bool:
+    def __eq__(self, other: int | float | Distance) -> bool:
         return self.km == self.get_value(other)
 
-    def __lt__(self, other: int | float | "Distance") -> bool:
+    def __lt__(self, other: int | float | Distance) -> bool:
         return self.km < self.get_value(other)
 
-    def __gt__(self, other: int | float | "Distance") -> bool:
+    def __gt__(self, other: int | float | Distance) -> bool:
         return self.km > self.get_value(other)
 
-    def __le__(self, other: int | float | "Distance") -> bool:
+    def __le__(self, other: int | float | Distance) -> bool:
         return self.km <= self.get_value(other)
 
-    def __ge__(self, other: int | float | "Distance") -> bool:
+    def __ge__(self, other: int | float | Distance) -> bool:
         return self.km >= self.get_value(other)
 
     @staticmethod
